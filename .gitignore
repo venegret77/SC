@@ -1,0 +1,8 @@
+.tools
+.vs
+*/bin/*
+*/obj/*
+*.user
+*packages/*
+*publish/*
+*node_modules/*
