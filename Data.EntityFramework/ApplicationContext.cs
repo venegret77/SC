@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SC.Data.EntityFramework.Models;
+using Data.EntityFramework.Models;
 
-namespace SC.Data.EntityFramework
+namespace Data.EntityFramework
 {
     public sealed class ApplicationContext : DbContext
     {

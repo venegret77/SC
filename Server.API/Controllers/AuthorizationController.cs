@@ -1,6 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Common.Models;
+using Common.Models.Students;
+using Microsoft.AspNetCore.Mvc;
+using Services.Interfaces;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace StudentControl.Server.API.Controllers
+namespace Server.API.Controllers
 {
     /// <summary>
     /// Authorization controller
@@ -9,5 +14,27 @@ namespace StudentControl.Server.API.Controllers
     [ApiController]
     public class AuthorizationController : ControllerBase
     {
+        private readonly IStudentService studentService;
+
+        /// <summary>
+        /// DI constructor
+        /// </summary>
+        /// <param name="studentService"></param>
+        public AuthorizationController(IStudentService studentService)
+        {
+            this.studentService = studentService;
+        }
+
+        /// <summary>
+        /// Получение постраничного списка студентов
+        /// </summary>
+        /// <param name="skip"></param>
+        /// <param name="take"></param>
+        /// <returns></returns>
+        [HttpGet("GetPagedStudents")]
+        public async Task<ResultContainer<PagedContainer<IEnumerable<StudentViewModel>>>> GetPagedStudentsAsync(int? skip, int? take)
+        {
+            return await studentService.GetPagedStudentsAsync(skip, take);
+        }
     }
 }

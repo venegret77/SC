@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SC.Data.EntityFramework.Models
+namespace Data.EntityFramework.Models
 {
     [Table("GroupStudent")]
     public sealed class GroupStudent

@@ -8,12 +8,16 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using SC.Data.EntityFramework;
+using Data.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Services.Interfaces;
+using Services.Implementation;
+using Repositories.Implementation;
+using Repositories.Interfaces;
 
-namespace StudentControl
+namespace Server.API
 {
     /// <summary>
     /// 
@@ -38,7 +42,11 @@ namespace StudentControl
         public void ConfigureServices(IServiceCollection services)
         {
             #region DI
+            //Repositories
+            services.AddScoped<IStudentRepository, StudentRepository>();
+
             // Services
+            services.AddScoped<IStudentService, StudentService>();
             #endregion
 
             services.AddDbContext<ApplicationContext>(options => options
@@ -109,7 +117,7 @@ namespace StudentControl
                     }
                 });
 
-                var xmlCommentsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "StudentControl.Server.API.xml");
+                var xmlCommentsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Server.API.xml");
                 c.IncludeXmlComments(xmlCommentsPath);
             });
         }

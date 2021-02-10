@@ -6,6 +6,10 @@
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>.\Server.API.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.6" />
@@ -20,6 +24,16 @@
     <ProjectReference Include="..\Common.Configuration\Common.Configuration.csproj" />
     <ProjectReference Include="..\Common.JWT\Common.JWT.csproj" />
     <ProjectReference Include="..\Data.EntityFramework\Data.EntityFramework.csproj" />
+    <ProjectReference Include="..\Repositories.Implementation\Repositories.Implementation.csproj" />
+    <ProjectReference Include="..\Repositories.Interfaces\Repositories.Interfaces.csproj" />
+    <ProjectReference Include="..\Services.Implementation\Services.Implementation.csproj" />
+    <ProjectReference Include="..\Services.Interfaces\Services.Interfaces.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Server.API.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
