@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories.Implementation
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories.Interfaces", "Repositories.Interfaces\Repositories.Interfaces.csproj", "{80B450C5-0D1F-4FCD-8CF3-F51502F15397}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentControl.Server.API", "StudentControl.Server.API\StudentControl.Server.API.csproj", "{73CD3834-A286-4E27-8A5E-64DF91CEA268}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server.API", "Server.API\Server.API.csproj", "{8EDA2AA1-5687-49C8-AC1A-D2F0B5B90AED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,10 +67,10 @@ Global
 		{80B450C5-0D1F-4FCD-8CF3-F51502F15397}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80B450C5-0D1F-4FCD-8CF3-F51502F15397}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80B450C5-0D1F-4FCD-8CF3-F51502F15397}.Release|Any CPU.Build.0 = Release|Any CPU
-		{73CD3834-A286-4E27-8A5E-64DF91CEA268}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{73CD3834-A286-4E27-8A5E-64DF91CEA268}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{73CD3834-A286-4E27-8A5E-64DF91CEA268}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{73CD3834-A286-4E27-8A5E-64DF91CEA268}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EDA2AA1-5687-49C8-AC1A-D2F0B5B90AED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EDA2AA1-5687-49C8-AC1A-D2F0B5B90AED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EDA2AA1-5687-49C8-AC1A-D2F0B5B90AED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EDA2AA1-5687-49C8-AC1A-D2F0B5B90AED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
