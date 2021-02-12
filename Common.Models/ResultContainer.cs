@@ -5,17 +5,19 @@ namespace Common.Models
     public class ResultContainer
     {
         [JsonProperty("success")]
-        public bool Success
-        {
-            get => Success;
-            set => Success = value;
-        }
+        public bool Success { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
 
         [JsonProperty("snackbarType")]
         public string SnackbarType { get; set; }
+
+        public ResultContainer()
+        {
+            Success = false;
+            SnackbarType = "";//TODO
+        }
     }
 
     public sealed class ResultContainer<TObject> : ResultContainer
