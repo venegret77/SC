@@ -12,15 +12,15 @@ namespace Server.API.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthorizationController : ControllerBase
+    public class StudentController : ControllerBase
     {
         private readonly IStudentService studentService;
 
         /// <summary>
-        /// DI constructor
+        /// Конструктор DI
         /// </summary>
         /// <param name="studentService"></param>
-        public AuthorizationController(IStudentService studentService)
+        public StudentController(IStudentService studentService)
         {
             this.studentService = studentService;
         }

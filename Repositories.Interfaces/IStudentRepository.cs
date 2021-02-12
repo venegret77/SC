@@ -9,7 +9,7 @@ namespace Repositories.Interfaces
     {
         Task<int> GetStudentsCountAsync();
 
-        Task<IEnumerable<Student>> GetPagedStudentsAsync(int skip, int take);
+        Task<IEnumerable<StudentDto>> GetPagedStudentsAsync(int skip, int take);
 
         Task AddStudentAsync(AddStudentModel model);
 
