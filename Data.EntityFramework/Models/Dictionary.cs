@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SC.Data.EntityFramework.Models
+namespace Data.EntityFramework.Models
 {
     [Table("Dictionary")]
     public sealed class Dictionary
@@ -15,5 +15,8 @@ namespace SC.Data.EntityFramework.Models
 
         [Required]
         public string Value { get; set; }
+
+        [MaxLength(50)]
+        public string MUIIconName { get; set; }
     }
 }

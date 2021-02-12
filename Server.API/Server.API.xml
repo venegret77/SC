@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Server.API</name>
+    </assembly>
+    <members>
+        <member name="T:Server.API.Controllers.AuthorizationController">
+            <summary>
+            Authorization controller
+            </summary>
+        </member>
+        <member name="M:Server.API.Controllers.AuthorizationController.#ctor(Services.Interfaces.IStudentService)">
+            <summary>
+            DI constructor
+            </summary>
+            <param name="studentService"></param>
+        </member>
+        <member name="M:Server.API.Controllers.AuthorizationController.GetPagedStudentsAsync(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Получение постраничного списка студентов
+            </summary>
+            <param name="skip"></param>
+            <param name="take"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Server.API.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Server.API.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:Server.API.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Server.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>
