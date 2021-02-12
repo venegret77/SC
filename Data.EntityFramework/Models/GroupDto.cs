@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Data.EntityFramework.Models
 {
     [Table("Group")]
-    public sealed class Group
+    public sealed class GroupDto
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

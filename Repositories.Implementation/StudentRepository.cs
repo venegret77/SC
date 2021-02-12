@@ -24,7 +24,7 @@ namespace Repositories.Implementation
                 .CountAsync();
         }
 
-        public async Task<IEnumerable<Student>> GetPagedStudentsAsync(int skip, int take)
+        public async Task<IEnumerable<StudentDto>> GetPagedStudentsAsync(int skip, int take)
         {
             return await applicationContext.Students
                 .OrderBy(s => s.Id)

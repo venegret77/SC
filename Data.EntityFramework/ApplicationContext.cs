@@ -5,10 +5,10 @@ namespace Data.EntityFramework
 {
     public sealed class ApplicationContext : DbContext
     {
-        public DbSet<Dictionary> Dictionaries { get; set; }
-        public DbSet<Student> Students { get; set; }
-        public DbSet<Group> Groups { get; set; }
-        public DbSet<GroupStudent> GroupStudents { get; set; }
+        public DbSet<DictionaryDto> Dictionaries { get; set; }
+        public DbSet<StudentDto> Students { get; set; }
+        public DbSet<GroupDto> Groups { get; set; }
+        public DbSet<GroupStudentDto> GroupStudents { get; set; }
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
@@ -18,10 +18,10 @@ namespace Data.EntityFramework
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Dictionary>().ToTable("Dictionary");
-            modelBuilder.Entity<Student>().ToTable("Student");
-            modelBuilder.Entity<Group>().ToTable("Group");
-            modelBuilder.Entity<GroupStudent>().ToTable("GroupStudent");
+            modelBuilder.Entity<DictionaryDto>().ToTable("Dictionary");
+            modelBuilder.Entity<StudentDto>().ToTable("Student");
+            modelBuilder.Entity<GroupDto>().ToTable("Group");
+            modelBuilder.Entity<GroupStudentDto>().ToTable("GroupStudent");
         }
     }
 }

@@ -39,7 +39,6 @@ namespace Services.Implementation
                     Gender = new DictionaryViewModel
                     {
                         Id = s.Gender?.Id,
-                        Name = s.Gender?.Name,
                         Value = s.Gender?.Value,
                         MUIIconName = s.Gender?.MUIIconName
                     }

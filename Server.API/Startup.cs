@@ -44,9 +44,11 @@ namespace Server.API
             #region DI
             //Repositories
             services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<IDictionaryRepository, DictionaryRepository>();
 
             // Services
             services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<IDictionaryService, DictionaryService>();
             #endregion
 
             services.AddDbContext<ApplicationContext>(options => options
