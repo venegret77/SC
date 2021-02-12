@@ -4,18 +4,35 @@
         <name>Server.API</name>
     </assembly>
     <members>
-        <member name="T:Server.API.Controllers.AuthorizationController">
+        <member name="T:Server.API.Controllers.DictionaryController">
+            <summary>
+            Справочники
+            </summary>
+        </member>
+        <member name="M:Server.API.Controllers.DictionaryController.#ctor(Services.Interfaces.IDictionaryService)">
+            <summary>
+            Конструктор DI
+            </summary>
+            <param name="dictionaryService"></param>
+        </member>
+        <member name="M:Server.API.Controllers.DictionaryController.GetGendersAsync">
+            <summary>
+            Получение гендеров
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Server.API.Controllers.StudentController">
             <summary>
             Authorization controller
             </summary>
         </member>
-        <member name="M:Server.API.Controllers.AuthorizationController.#ctor(Services.Interfaces.IStudentService)">
+        <member name="M:Server.API.Controllers.StudentController.#ctor(Services.Interfaces.IStudentService)">
             <summary>
-            DI constructor
+            Конструктор DI
             </summary>
             <param name="studentService"></param>
         </member>
-        <member name="M:Server.API.Controllers.AuthorizationController.GetPagedStudentsAsync(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+        <member name="M:Server.API.Controllers.StudentController.GetPagedStudentsAsync(System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
             Получение постраничного списка студентов
             </summary>
