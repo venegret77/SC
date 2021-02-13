@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SC.Data.EntityFramework.Models
+namespace Data.EntityFramework.Models
 {
     [Table("Group")]
-    public sealed class Group
+    public sealed class GroupDto
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

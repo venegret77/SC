@@ -17,7 +17,7 @@ namespace Common.JWT
         /// </summary>
         /// <param name="id">Идентификатор пользователя</param>
         /// <returns>Возвращает токен доступа</returns>
-        public static TokenModel GenerateJWTToken(int accountId, int lifetimeInMinutes)
+        public static TokenModel GenerateJWTToken(long accountId, int lifetimeInMinutes)
         {
             var securityKey = AuthOptions.GetSymmetricSecurityKey();
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);

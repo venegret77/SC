@@ -1,19 +1,19 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SC.Data.EntityFramework.Models
+namespace Data.EntityFramework.Models
 {
     [Table("Student")]
-    public sealed class Student
+    public sealed class StudentDto
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
-        [ForeignKey("FK_GenderId")]
+        [ForeignKey("FK_Dictionary_GenderId")]
         [Required]
         public int GenderId { get; set; }
-        public Dictionary Gender { get; set; }
+        public DictionaryDto Gender { get; set; }
 
         [Required, MaxLength(40)]
         public string LastName { get; set; }
