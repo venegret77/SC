@@ -19,5 +19,7 @@ namespace Repositories.Interfaces
         Task AddToken(long accountId, string token, DateTime expirationDateTime);
 
         Task RemoveTokensByAccountIdAsync(long accountId);
+
+        Task<bool> IsRefreshTokenValidAsync(long accountId, string authorizationHeader);
     }
 }

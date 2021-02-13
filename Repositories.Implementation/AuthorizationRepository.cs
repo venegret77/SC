@@ -89,5 +89,23 @@ namespace Repositories.Implementation
 
             await applicationContext.SaveChangesAsync();
         }
+
+        public async Task<bool> IsRefreshTokenValidAsync(long accountId, string authorizationHeader)
+        {
+            var tokens = await applicationContext.AuthorizationTokens
+                .Where(a => a.AccountId == accountId && a.Token == authorizationHeader)
+                .ToListAsync();
+
+            var removedTokens = tokens
+                .Where(t => t.ExpirationDateTime < DateTime.UtcNow)
+                .ToList();
+
+            applicationContext.AuthorizationTokens
+                .RemoveRange(removedTokens);
+
+            await applicationContext.SaveChangesAsync();
+
+            return tokens.Any() && removedTokens.Count < tokens.Count;
+        }
     }
 }

@@ -89,12 +89,23 @@ namespace Services.Implementation
             return result;
         }
 
-        public async Task<ResultContainer<TokenModel>> GenerateNewAccessTokenAsync(long accountId)
+        public async Task<ResultContainer<TokenModel>> GenerateNewAccessTokenAsync(long accountId, string authorizationHeader)
         {
             var result = new ResultContainer<TokenModel>();
 
             try
             {
+                var isRefreshTokenValid = await authorizationRepository.IsRefreshTokenValidAsync(accountId, authorizationHeader);
+
+                if (!isRefreshTokenValid)
+                {
+                    result.SetError(Errors.RefreshTokenError, SnackbarTypes.Warning);
+                    return result;
+                }
+
+                var acceessToken = GeneratorJWTTokens.GenerateJWTToken(accountId, accessTokenLifetime);
+
+                result.SetResult("", acceessToken);
             }
             catch (Exception exception)
             {
@@ -110,6 +121,22 @@ namespace Services.Implementation
 
             try
             {
+                var isAccountExists = await authorizationRepository.IsAccountExistsAsync(accountId);
+
+                if (!isAccountExists)
+                {
+                    result.SetError(Errors.AccountNotFound, SnackbarTypes.Warning);
+                    return result;
+                }
+
+                var account = await authorizationRepository.GetAccountAsync(accountId);
+
+                var accountModel = new AccountViewModel
+                {
+                    Login = account.Login
+                };
+
+                result.SetResult(InfoMessages.LoginSuccess, accountModel);
             }
             catch (Exception exception)
             {

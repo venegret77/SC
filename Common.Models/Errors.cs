@@ -8,6 +8,12 @@ namespace Common.Models
         AccountNotFound,
 
         [Description("Учетная запись с таким именем уже существует")]
-        LoginExists
+        LoginExists,
+
+        [Description("Некорректный Refresh токен")]
+        RefreshTokenError,
+
+        [Description("Модель не прошла валидацию")]
+        ModelValidationError
     }
 }

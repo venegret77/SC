@@ -6,7 +6,7 @@
     <members>
         <member name="T:Server.API.Controllers.AuthorizationController">
             <summary>
-            
+            Контроллер для взаимодействия с сервисом авторизации
             </summary>
         </member>
         <member name="M:Server.API.Controllers.AuthorizationController.#ctor(Services.Interfaces.IAuthorizationService)">
@@ -14,6 +14,38 @@
             Конструктор DI
             </summary>
             <param name="authorizationService"></param>
+        </member>
+        <member name="M:Server.API.Controllers.AuthorizationController.LoginAsync(Common.Models.Authorization.LoginOrRegistrationModel)">
+            <summary>
+            Вход
+            </summary>
+            <param name="model">Модель данных</param>
+            <returns>Результирующий контейнер</returns>
+        </member>
+        <member name="M:Server.API.Controllers.AuthorizationController.RegistrationAsync(Common.Models.Authorization.LoginOrRegistrationModel)">
+            <summary>
+            Регистрация
+            </summary>
+            <param name="model">Модель данных</param>
+            <returns>Результирующий контейнер</returns>
+        </member>
+        <member name="M:Server.API.Controllers.AuthorizationController.GetAccountInfoAsync">
+            <summary>
+            Получение информации об учетной записи
+            </summary>
+            <returns>Результирующий контейнер</returns>
+        </member>
+        <member name="M:Server.API.Controllers.AuthorizationController.GenerateNewAccessTokenAsync">
+            <summary>
+            Генерация нового access токена доступа на основе refresh токена
+            </summary>
+            <returns>Результирующий контейнер</returns>
+        </member>
+        <member name="M:Server.API.Controllers.AuthorizationController.LogoutAsync">
+            <summary>
+            Выход
+            </summary>
+            <returns>Результирующий контейнер</returns>
         </member>
         <member name="T:Server.API.Controllers.DictionaryController">
             <summary>

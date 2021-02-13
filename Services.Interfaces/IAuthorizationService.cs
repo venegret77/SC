@@ -13,7 +13,7 @@ namespace Services.Interfaces
 
         Task<ResultContainer<AccountViewModel>> GetAccountInfoAsync(long accountId);
 
-        Task<ResultContainer<TokenModel>> GenerateNewAccessTokenAsync(long accountId);
+        Task<ResultContainer<TokenModel>> GenerateNewAccessTokenAsync(long accountId, string authorizationHeader);
 
         Task<ResultContainer> LogoutAsync(long accountId);
     }
