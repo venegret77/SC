@@ -5,7 +5,7 @@ namespace Common.Models.Authorization
 {
     public sealed class AccountViewModel
     {
-        [JsonProperty("login")]
+        [JsonProperty("login"), MaxJsonLength(nameof(Login), 50)]
         public string Login { get; set; }
 
         [JsonProperty("accessToken")]
