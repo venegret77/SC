@@ -5,6 +5,8 @@ namespace Data.EntityFramework
 {
     public sealed class ApplicationContext : DbContext
     {
+        public DbSet<AccountDto> Accounts { get; set; }
+        public DbSet<AuthorizationTokenDto> AuthorizationTokens { get; set; }
         public DbSet<DictionaryDto> Dictionaries { get; set; }
         public DbSet<StudentDto> Students { get; set; }
         public DbSet<GroupDto> Groups { get; set; }
@@ -18,6 +20,8 @@ namespace Data.EntityFramework
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<AccountDto>().ToTable("Account");
+            modelBuilder.Entity<AuthorizationTokenDto>().ToTable("AuthorizationToken");
             modelBuilder.Entity<DictionaryDto>().ToTable("Dictionary");
             modelBuilder.Entity<StudentDto>().ToTable("Student");
             modelBuilder.Entity<GroupDto>().ToTable("Group");

@@ -1,5 +1,6 @@
 ﻿using Common.Models;
 using Common.Models.Students;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace Server.API.Controllers
     /// <summary>
     /// Authorization controller
     /// </summary>
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class StudentController : ControllerBase
