@@ -45,10 +45,13 @@ namespace Server.API
             //Repositories
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<IDictionaryRepository, DictionaryRepository>();
+            services.AddScoped<IAuthorizationRepository, AuthorizationRepository>();
 
             // Services
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<IDictionaryService, DictionaryService>();
+            services.AddScoped<IAuthorizationService, AuthorizationService>();
+            services.AddScoped<IHashService, Sha256HashService>();
             #endregion
 
             services.AddDbContext<ApplicationContext>(options => options

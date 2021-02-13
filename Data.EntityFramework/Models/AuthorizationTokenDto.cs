@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.EntityFramework.Models
@@ -12,5 +13,8 @@ namespace Data.EntityFramework.Models
 
         [Required]
         public string Token { get; set; }
+
+        [Required]
+        public DateTime ExpirationDateTime { get; set; }
     }
 }

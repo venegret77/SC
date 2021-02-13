@@ -11,10 +11,10 @@ namespace Services.Interfaces
 
         Task<ResultContainer<AccountViewModel>> RegistrationAsync(LoginOrRegistrationModel model);
 
-        Task<ResultContainer<AccountViewModel>> GetAccountInfoAsync(int accountId);
+        Task<ResultContainer<AccountViewModel>> GetAccountInfoAsync(long accountId);
 
-        Task<ResultContainer<TokenModel>> GenerateNewAccessTokenAsync(int accountId);
+        Task<ResultContainer<TokenModel>> GenerateNewAccessTokenAsync(long accountId);
 
-        Task<ResultContainer> LogoutAsync(int accountId);
+        Task<ResultContainer> LogoutAsync(long accountId);
     }
 }

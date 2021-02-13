@@ -2,6 +2,7 @@
 using Data.EntityFramework.Models;
 using Microsoft.EntityFrameworkCore;
 using Repositories.Interfaces;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,10 +17,34 @@ namespace Repositories.Implementation
             this.applicationContext = applicationContext;
         }
 
-        public async Task<AccountDto> GetAccountAsync(int accountId)
+        public async Task<bool> IsAccountExistsAsync(long accountId)
         {
             return await applicationContext.Accounts
-                .FirstOrDefaultAsync();
+                .AnyAsync(a => a.Id == accountId);
+        }
+
+        public async Task<bool> IsAccountExistsAsync(string login, string hash)
+        {
+            return await applicationContext.Accounts
+                .AnyAsync(a => a.Login == login && a.Hash == hash);
+        }
+
+        public async Task<bool> IsLoginExistsAsync(string login)
+        {
+            return await applicationContext.Accounts
+                .AnyAsync(a => a.Login == login);
+        }
+
+        public async Task<AccountDto> GetAccountAsync(long accountId)
+        {
+            return await applicationContext.Accounts
+                .FirstOrDefaultAsync(a => a.Id == accountId);
+        }
+
+        public async Task<AccountDto> GetAccountAsync(string login)
+        {
+            return await applicationContext.Accounts
+                .FirstOrDefaultAsync(a => a.Login == login);
         }
 
         public async Task<AccountDto> AddAccountAsync(string login, string hash)
@@ -36,9 +61,25 @@ namespace Repositories.Implementation
             await applicationContext.SaveChangesAsync();
 
             return account;
-        }        
+        }
 
-        public async Task RemoveTokensByAccountIdAsync(int accountId)
+        public async Task AddToken(long accountId, string token, DateTime expirationDateTime)
+        {
+            await RemoveTokensByAccountIdAsync(accountId);
+
+            var tokenDto = new AuthorizationTokenDto
+            {
+                AccountId = accountId,
+                Token = token,
+                ExpirationDateTime = expirationDateTime
+            };
+
+            await applicationContext.AuthorizationTokens.AddAsync(tokenDto);
+
+            await applicationContext.SaveChangesAsync();
+        }
+
+        public async Task RemoveTokensByAccountIdAsync(long accountId)
         {
             var tokens = await applicationContext.AuthorizationTokens
                 .Where(a => a.AccountId == accountId)
