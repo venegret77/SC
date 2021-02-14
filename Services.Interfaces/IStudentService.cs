@@ -7,7 +7,7 @@ namespace Services.Interfaces
 {
     public interface IStudentService
     {
-        Task<ResultContainer<PagedContainer<IEnumerable<StudentViewModel>>>> GetPagedStudentsAsync(int? skip, int? take);
+        Task<ResultContainer<PagedContainer<IEnumerable<StudentViewModel>>>> GetStudentsAsync(StudentsQueryOptions queryOptions);
 
         Task<ResultContainer<long>> AddStudentAsync(AddOrUpdateStudentModel model);
 

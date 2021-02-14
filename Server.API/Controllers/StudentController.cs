@@ -31,11 +31,10 @@ namespace Server.API.Controllers
         /// <summary>
         /// Получение постраничного списка студентов
         /// </summary>
-        /// <param name="skip">Пропустить</param>
-        /// <param name="take">Взять</param>
+        /// <param name="queryOptions">Фильтры</param>
         /// <returns>Результирующий контейнер</returns>
         [HttpGet("GetPagedStudents")]
-        public async Task<ResultContainer<PagedContainer<IEnumerable<StudentViewModel>>>> GetPagedStudentsAsync(int? skip, int? take)
+        public async Task<ResultContainer<PagedContainer<IEnumerable<StudentViewModel>>>> GetStudentsAsync(StudentsQueryOptions queryOptions)
         {
             #region Validate model
             if (!ModelState.IsValid)
@@ -44,7 +43,7 @@ namespace Server.API.Controllers
             }
             #endregion
 
-            return await studentService.GetPagedStudentsAsync(skip, take);
+            return await studentService.GetStudentsAsync(queryOptions);
         }
 
         /// <summary>
