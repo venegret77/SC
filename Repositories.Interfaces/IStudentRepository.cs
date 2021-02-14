@@ -11,7 +11,7 @@ namespace Repositories.Interfaces
 
         Task<IEnumerable<StudentDto>> GetPagedStudentsAsync(int skip, int take);
 
-        Task AddStudentAsync(AddStudentModel model);
+        Task<long> AddStudentAsync(AddOrUpdateStudentModel model);
 
         Task UpdateStudentAsync(UpdateStudentModel model);
 

@@ -32,6 +32,9 @@ namespace Server.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetGenders")]
-        public async Task<ResultContainer<IEnumerable<DictionaryViewModel>>> GetGendersAsync() => await dictionaryService.GetGendersAsync();
+        public async Task<ResultContainer<IEnumerable<DictionaryViewModel>>> GetGendersAsync()
+        {
+            return await dictionaryService.GetGendersAsync();
+        }
     }
 }

@@ -32,14 +32,44 @@ namespace Repositories.Implementation
                 .ToListAsync();
         }
 
-        public async Task AddStudentAsync(AddStudentModel model)
+        public async Task<long> AddStudentAsync(AddOrUpdateStudentModel model)
         {
-            throw new System.NotImplementedException();
+            var student = new StudentDto
+            {
+                GenderId = model.GenderId,
+                LastName = model.LastName,
+                FirstName = model.FirstName,
+                MiddleName = model.MiddleName,
+                Identifer = model.Identifer
+            };
+
+            await applicationContext.Students
+                .AddAsync(student);
+
+            await applicationContext.SaveChangesAsync();
+
+            return student.Id;
         }
 
         public async Task UpdateStudentAsync(UpdateStudentModel model)
         {
-            throw new System.NotImplementedException();
+            var student = await applicationContext.Students
+                .FirstOrDefaultAsync(s => s.Id == model.StudentId);
+
+            if (student != default)
+            {
+                student.GenderId = model.GenderId;
+                student.LastName = model.LastName;
+                student.FirstName = model.FirstName;
+                student.MiddleName = model.MiddleName;
+                student.Identifer = model.Identifer;
+
+                await applicationContext.SaveChangesAsync();
+            }
+            else
+            {
+                throw new System.Exception($"Student not found; ID = {model.StudentId}");
+            }
         }
 
         public async Task DeleteStudentAsync(long id)
@@ -47,9 +77,16 @@ namespace Repositories.Implementation
             var student = applicationContext.Students
                 .FirstOrDefaultAsync(s => s.Id == id);
 
-            applicationContext.Remove(student);
+            if (student != default)
+            {
+                applicationContext.Remove(student);
 
-            await applicationContext.SaveChangesAsync();
+                await applicationContext.SaveChangesAsync();
+            }
+            else
+            {
+                throw new System.Exception($"Student not found; ID = {id}");
+            }
         }
     }
 }

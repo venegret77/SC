@@ -8,12 +8,12 @@ namespace Data.EntityFramework.Models
     {
         [ForeignKey("FK_StudentId")]
         [Required]
-        public int StudentId { get; set; }
+        public long StudentId { get; set; }
         public StudentDto Student { get; set; }
 
         [ForeignKey("FK_GroupId")]
         [Required]
-        public int GroupId { get; set; }
+        public long GroupId { get; set; }
         public GroupDto Group { get; set; }
     }
 }

@@ -33,12 +33,11 @@ namespace Services.Implementation
                     MUIIconName = g.MUIIconName
                 });
 
-                result.Success = true;
-                result.Content = content;
+                result.SetResult(null, content);
             }
             catch(Exception exception)
             {
-                result.Message = exception.Message;
+                result.SetError(exception);
             }
 
             return result;

@@ -12,7 +12,7 @@ namespace Data.EntityFramework.Models
 
         [ForeignKey("FK_Dictionary_GenderId")]
         [Required]
-        public int GenderId { get; set; }
+        public long GenderId { get; set; }
         public DictionaryDto Gender { get; set; }
 
         [Required, MaxLength(40)]

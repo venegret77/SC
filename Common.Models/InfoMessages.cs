@@ -11,6 +11,15 @@ namespace Common.Models
         RegistrationSuccess,
 
         [Description("Вы успешно вышли из системы!")]
-        LogoutSuccess
+        LogoutSuccess,
+
+        [Description("Студент успешно добавлен")]
+        StudentAddSuccess,
+
+        [Description("Данные о студенте успешно изменены")]
+        StudentUpdateSuccess,
+
+        [Description("Студент успешно удален")]
+        StudentDeleteSuccess
     }
 }

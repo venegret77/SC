@@ -79,9 +79,31 @@
             <summary>
             Получение постраничного списка студентов
             </summary>
-            <param name="skip"></param>
-            <param name="take"></param>
-            <returns></returns>
+            <param name="skip">Пропустить</param>
+            <param name="take">Взять</param>
+            <returns>Результирующий контейнер</returns>
+        </member>
+        <member name="M:Server.API.Controllers.StudentController.AddStudentAsync(Common.Models.Students.AddOrUpdateStudentModel)">
+            <summary>
+            Добавление студента
+            </summary>
+            <param name="model">Модель данных</param>
+            <returns>Результирующий контейнер</returns>
+        </member>
+        <member name="M:Server.API.Controllers.StudentController.UpdateStudentAsync(System.Int64,Common.Models.Students.AddOrUpdateStudentModel)">
+            <summary>
+            Изменение данных о студенте
+            </summary>
+            <param name="id">Идентификатор студента</param>
+            <param name="model">Модель данных</param>
+            <returns>Результирующий контейнер</returns>
+        </member>
+        <member name="M:Server.API.Controllers.StudentController.DeleteStudentAsync(System.Int64)">
+            <summary>
+            Удаление студента
+            </summary>
+            <param name="id">Идентификатор студента</param>
+            <returns>Результирующий контейнер</returns>
         </member>
         <member name="T:Server.API.Startup">
             <summary>

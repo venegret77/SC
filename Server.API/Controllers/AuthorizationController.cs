@@ -33,7 +33,7 @@ namespace Server.API.Controllers
         /// </summary>
         /// <param name="model">Модель данных</param>
         /// <returns>Результирующий контейнер</returns>
-        [HttpGet("Login")]
+        [HttpPost("Login")]
         public async Task<ResultContainer<AccountViewModel>> LoginAsync(LoginOrRegistrationModel model)
         {
             #region Validate model
@@ -51,7 +51,7 @@ namespace Server.API.Controllers
         /// </summary>
         /// <param name="model">Модель данных</param>
         /// <returns>Результирующий контейнер</returns>
-        [HttpGet("Registration")]
+        [HttpPost("Registration")]
         public async Task<ResultContainer<AccountViewModel>> RegistrationAsync(LoginOrRegistrationModel model)
         {
             #region Validate model
