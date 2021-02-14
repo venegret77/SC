@@ -64,6 +64,17 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:Server.API.Controllers.GroupController">
+            <summary>
+            Работа с группами
+            </summary>
+        </member>
+        <member name="M:Server.API.Controllers.GroupController.#ctor(Services.Interfaces.IGroupService)">
+            <summary>
+            Конструктор DI
+            </summary>
+            <param name="groupService"></param>
+        </member>
         <member name="T:Server.API.Controllers.StudentController">
             <summary>
             Authorization controller
