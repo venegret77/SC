@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Common.Models.Students
 {
@@ -18,5 +19,8 @@ namespace Common.Models.Students
 
         [JsonProperty("identifer"), MaxJsonLength(nameof(Identifer), 16)]
         public string Identifer { get; set; }
+
+        [JsonProperty("groupIds")]
+        public List<long> GroupIds { get; set; }
     }
 }

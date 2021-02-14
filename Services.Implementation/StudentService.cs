@@ -1,6 +1,7 @@
 ﻿using Common.Models;
 using Common.Models.Dictionaries;
 using Common.Models.Students;
+using Microsoft.Extensions.Caching.Memory;
 using Repositories.Interfaces;
 using Services.Interfaces;
 using System;
@@ -19,17 +20,15 @@ namespace Services.Implementation
             this.studentRepository = studentRepository;
         }
 
-        public async Task<ResultContainer<PagedContainer<IEnumerable<StudentViewModel>>>> GetPagedStudentsAsync(int? skip, int? take)
+        public async Task<ResultContainer<PagedContainer<IEnumerable<StudentViewModel>>>> GetStudentsAsync(StudentsQueryOptions queryOptions)
         {
             var result = new ResultContainer<PagedContainer<IEnumerable<StudentViewModel>>>();
 
             try
             {
-                var count = await studentRepository.GetStudentsCountAsync();
+                var students = await studentRepository.GetStudentsAsync(queryOptions);
 
-                var students = await studentRepository.GetPagedStudentsAsync(skip ?? 0, take ?? count);
-
-                var content = students.Select(s => new StudentViewModel
+                var studentModels = students.Select(s => new StudentViewModel
                 {
                     Id = s.Id,
                     FirstName = s.FirstName,
@@ -44,12 +43,13 @@ namespace Services.Implementation
                     }
                 }).ToList();
 
-                result.Success = true;
-                result.Content = new PagedContainer<IEnumerable<StudentViewModel>>
+                var content = new PagedContainer<IEnumerable<StudentViewModel>>
                 {
-                    Count = count,
-                    Content = content
+                    Count = students.Count(),
+                    Content = studentModels
                 };
+
+                result.SetResult(null, content);
             }
             catch(Exception exception)
             {

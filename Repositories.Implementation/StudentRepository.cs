@@ -18,18 +18,42 @@ namespace Repositories.Implementation
             this.applicationContext = applicationContext;
         }
 
-        public async Task<int> GetStudentsCountAsync()
+        public async Task<IEnumerable<StudentDto>> GetStudentsAsync(StudentsQueryOptions queryOptions)
         {
-            return await applicationContext.Students
-                .CountAsync();
-        }
+            var students = applicationContext.Students.AsQueryable();
 
-        public async Task<IEnumerable<StudentDto>> GetPagedStudentsAsync(int skip, int take)
-        {
-            return await applicationContext.Students
-                .OrderBy(s => s.Id)
-                .Skip(skip).Take(take)
-                .ToListAsync();
+            if (queryOptions.GenderId != null)
+            {
+                students = students
+                    .Where(s => s.GenderId == (long)queryOptions.GenderId);
+            }
+
+            if (queryOptions.GroupIds?.Any() ?? false)
+            {
+                students = applicationContext.GroupStudents
+                    .Where(g => queryOptions.GroupIds.Contains(g.GroupId))
+                    .SelectMany(g => students
+                    .Where(s => s.Id == g.StudentId))
+                    .Distinct();
+            }
+
+            if (!string.IsNullOrWhiteSpace(queryOptions.Identifer))
+            {
+                students = students
+                    .Where(s => s.Identifer.Contains(queryOptions.Identifer));
+            }
+
+            if (!string.IsNullOrWhiteSpace(queryOptions.Name))
+            {
+                students = students
+                    .Where(s => $"{s.LastName} {s.FirstName} {s.MiddleName}".Contains(queryOptions.Name));
+            }
+
+            students = students
+                .Skip(queryOptions.Skip ?? 0)
+                .Take(queryOptions.Take ?? students.Count());
+
+            return await students.ToListAsync();
         }
 
         public async Task<long> AddStudentAsync(AddOrUpdateStudentModel model)

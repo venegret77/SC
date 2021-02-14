@@ -75,12 +75,11 @@
             </summary>
             <param name="studentService"></param>
         </member>
-        <member name="M:Server.API.Controllers.StudentController.GetPagedStudentsAsync(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+        <member name="M:Server.API.Controllers.StudentController.GetStudentsAsync(Common.Models.Students.StudentsQueryOptions)">
             <summary>
             Получение постраничного списка студентов
             </summary>
-            <param name="skip">Пропустить</param>
-            <param name="take">Взять</param>
+            <param name="queryOptions">Фильтры</param>
             <returns>Результирующий контейнер</returns>
         </member>
         <member name="M:Server.API.Controllers.StudentController.AddStudentAsync(Common.Models.Students.AddOrUpdateStudentModel)">
